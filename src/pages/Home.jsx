@@ -77,6 +77,7 @@ const Home = () => {
                             className="learn-btn"
                             onClick={() => {
                                 if (card.id === 1) navigate("/java");
+                                if (card.id === 2) navigate("/db");
                             }}
                         >
                             Let's Learn
