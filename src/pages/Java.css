@@ -247,6 +247,161 @@
   color: white;
   border: 1px solid #dc3545;
 }
+.coding-container {
+  padding: 20px;
+}
+
+.coding-card {
+  background: #1e1e2f;
+  color: white;
+  padding: 18px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+.coding-question h3 {
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.coding-question p {
+  color: #bdbdbd;
+  margin-bottom: 10px;
+}
+
+.show-btn {
+  background: linear-gradient(45deg, #4cafef, #2196f3);
+  border: none;
+  padding: 8px 14px;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.show-btn:hover {
+  transform: scale(1.03);
+}
+
+.coding-answer {
+  background: #121212;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+  border-left: 4px solid #4cafef;
+}
+
+.coding-answer h4 {
+  margin-bottom: 8px;
+  color: #4cafef;
+}
+
+.coding-answer pre {
+  background: #000;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  color: #00ffcc;
+  font-size: 14px;
+}
+
+.explanation {
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 14px;
+}
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.copy-btn {
+  background: #4cafef;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.copy-btn:hover {
+  background: #2196f3;
+  transform: scale(1.05);
+}
+
+.copy-btn:active {
+  transform: scale(0.95);
+}
+.coding-container {
+  padding: 20px;
+}
+
+/* 🔥 2 cards per row */
+.coding-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Card */
+.coding-card {
+  background: #1e1e2f;
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* Question */
+.coding-question p {
+  color: #bdbdbd;
+}
+
+/* Button */
+.show-btn {
+  margin-top: 10px;
+  background: #4cafef;
+  border: none;
+  padding: 8px 12px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.show-btn:hover {
+  background: #2196f3;
+}
+
+/* Code header */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Copy button */
+.copy-btn {
+  background: #4cafef;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .coding-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* Footer */
 .footer {

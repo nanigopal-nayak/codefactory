@@ -13,6 +13,7 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.18.0",
+    "react-syntax-highlighter": "^16.1.1",
     "vite-plugin-singlefile": "^2.3.3"
   },
   "devDependencies": {

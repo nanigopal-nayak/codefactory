@@ -3,16 +3,23 @@ import logo from "../assets/logo.png";
 import "./Java.css";
 import javaQuestions from "../data/javaQuestions";
 import javaMCQ from "../data/javaMCQ";
+import javaCoding from "../data/javaCoding";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
+
 
 const Java = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [activeTab, setActiveTab] = useState("qa");
+  const [visible, setVisible] = useState(javaCoding.map(() => false));
 
   const [currentQ, setCurrentQ] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
 
   const [submitted, setSubmitted] = useState([]);
+
+  const [copiedIndex, setCopiedIndex] = useState(null);
 
   const qaData = javaQuestions;
 
@@ -52,6 +59,15 @@ const Java = () => {
       if (selectedAnswers[i] === q.answer) score++;
     });
     return score;
+  };
+  const copyToClipboard = (code, index) => {
+    navigator.clipboard.writeText(code);
+
+    setCopiedIndex(index);
+
+    setTimeout(() => {
+      setCopiedIndex(null);
+    }, 2000);
   };
   return (
     <div className="page-container">
@@ -191,7 +207,7 @@ const Java = () => {
               onClick={() => {
                 setCurrentQ(0);
                 setSelectedAnswers([]);
-                setSubmitted([]);   
+                setSubmitted([]);
                 setShowResult(false);
               }}
             >
@@ -202,12 +218,67 @@ const Java = () => {
         )}
         {/* CODING TAB */}
         {activeTab === "coding" && (
-          <div className="tab-section">
+          <div className="tab-section coding-container">
             <h2>Coding Section</h2>
-            <p>Coding problems will be added here.</p>
+
+            <div className="coding-grid">
+              {javaCoding.map((item, index) => (
+                <div key={index} className="coding-card">
+
+                  {/* QUESTION */}
+                  <div className="coding-question">
+                    <h3>❓ {item.title}</h3>
+                    <p>{item.question}</p>
+                  </div>
+
+                  {/* BUTTON */}
+                  <button
+                    className="show-btn"
+                    onClick={() => {
+                      const updated = [...visible];
+                      updated[index] = !updated[index];
+                      setVisible(updated);
+                    }}
+                  >
+                    {visible[index] ? "🙈 Hide Solution" : "👨‍💻 Show Solution"}
+                  </button>
+
+                  {/* ANSWER */}
+                  {visible[index] && (
+                    <div className="coding-answer">
+
+                      <div className="code-header">
+                        <h4>💡 Solution:</h4>
+
+                        <button
+                          className="copy-btn"
+                          onClick={() => copyToClipboard(item.code, index)}
+                        >
+                          {copiedIndex === index ? "✔ Copied" : "📋 Copy"}
+                        </button>
+                      </div>
+
+                      <SyntaxHighlighter
+                        language="java"
+                        style={tomorrow}
+                        showLineNumbers
+                      >
+                        {item.code}
+                      </SyntaxHighlighter>
+
+                      {item.explanation && (
+                        <p className="explanation">
+                          <b>Explanation:</b> {item.explanation}
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                </div>
+              ))}
+            </div>
           </div>
         )}
-
       </main>
 
       {/* Footer */}
