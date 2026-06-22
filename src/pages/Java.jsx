@@ -14,12 +14,16 @@ const Java = () => {
   const [visible, setVisible] = useState(javaCoding.map(() => false));
 
   const [currentQ, setCurrentQ] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const questionsPerPage = 12;
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
 
   const [submitted, setSubmitted] = useState([]);
 
   const [copiedIndex, setCopiedIndex] = useState(null);
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   const qaData = javaQuestions;
 
@@ -69,6 +73,20 @@ const Java = () => {
       setCopiedIndex(null);
     }, 2000);
   };
+  const filteredCoding = javaCoding.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.question.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const indexOfLastQuestion = currentPage * questionsPerPage;
+  const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
+
+  const currentQuestions = qaData.slice(
+    indexOfFirstQuestion,
+    indexOfLastQuestion
+  );
+
+  const totalPages = Math.ceil(qaData.length / questionsPerPage);
   return (
     <div className="page-container">
 
@@ -107,35 +125,67 @@ const Java = () => {
       <main className="page-content">
 
         {/* Q&A TAB */}
+        {/* Q&A TAB */}
         {activeTab === "qa" && (
-          <div className="qa-grid">
-            {qaData.map((item, index) => (
-              <div key={index} className="qa-block">
+          <>
+            <div className="qa-grid">
+              {currentQuestions.map((item, index) => (
+                <div key={index} className="qa-block">
 
-                <div className="qa-row">
-                  <h3>{index + 1}. {item.question}</h3>
+                  <div className="qa-row">
+                    <h3>
+                      {indexOfFirstQuestion + index + 1}. {item.question}
+                    </h3>
 
-                  <div className="action">
-                    <button onClick={() => toggleAnswer(index)}>
-                      {openIndex === index ? "Hide Answer" : "Show Answer"}
-                    </button>
+                    <div className="action">
+                      <button
+                        onClick={() =>
+                          toggleAnswer(indexOfFirstQuestion + index)
+                        }
+                      >
+                        {openIndex === indexOfFirstQuestion + index
+                          ? "Hide Answer"
+                          : "Show Answer"}
+                      </button>
+                    </div>
                   </div>
+
+                  {openIndex === indexOfFirstQuestion + index && (
+                    <div className="answer-box">
+                      {item.answer.map((ans, i) => (
+                        <div key={i} className="answer-item">
+                          <span className="tick">✔</span>
+                          <p>{ans}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                 </div>
+              ))}
+            </div>
 
-                {openIndex === index && (
-                  <div className="answer-box">
-                    {item.answer.map((ans, i) => (
-                      <div key={i} className="answer-item">
-                        <span className="tick">✔</span>
-                        <p>{ans}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
+            {/* Pagination */}
+            <div className="pagination">
+              <button
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                ⬅ Previous
+              </button>
 
-              </div>
-            ))}
-          </div>
+              <span>
+                Page {currentPage} of {totalPages}
+              </span>
+
+              <button
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >
+                Next ➡
+              </button>
+            </div>
+          </>
         )}
 
         {/* MCQ TAB */}
@@ -221,61 +271,78 @@ const Java = () => {
           <div className="tab-section coding-container">
             <h2>Coding Section</h2>
 
+            <input
+              type="text"
+              placeholder="🔍 Search coding question..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-box"
+            />
+
             <div className="coding-grid">
-              {javaCoding.map((item, index) => (
-                <div key={index} className="coding-card">
+              {filteredCoding.length > 0 ? (
+                filteredCoding.map((item, index) => (
+                  <div key={index} className="coding-card">
 
-                  {/* QUESTION */}
-                  <div className="coding-question">
-                    <h3>❓ {item.title}</h3>
-                    <p>{item.question}</p>
-                  </div>
-
-                  {/* BUTTON */}
-                  <button
-                    className="show-btn"
-                    onClick={() => {
-                      const updated = [...visible];
-                      updated[index] = !updated[index];
-                      setVisible(updated);
-                    }}
-                  >
-                    {visible[index] ? "🙈 Hide Solution" : "👨‍💻 Show Solution"}
-                  </button>
-
-                  {/* ANSWER */}
-                  {visible[index] && (
-                    <div className="coding-answer">
-
-                      <div className="code-header">
-                        <h4>💡 Solution:</h4>
-
-                        <button
-                          className="copy-btn"
-                          onClick={() => copyToClipboard(item.code, index)}
-                        >
-                          {copiedIndex === index ? "✔ Copied" : "📋 Copy"}
-                        </button>
-                      </div>
-
-                      <SyntaxHighlighter
-                        language="java"
-                        style={tomorrow}
-                        showLineNumbers
-                      >
-                        {item.code}
-                      </SyntaxHighlighter>
-
-                      {item.explanation && (
-                        <p className="explanation">
-                          <b>Explanation:</b> {item.explanation}
-                        </p>
-                      )}
+                    {/* QUESTION */}
+                    <div className="coding-question">
+                      <h3>❓ {item.title}</h3>
+                      <p>{item.question}</p>
                     </div>
-                  )}
 
+                    {/* BUTTON */}
+                    <button
+                      className="show-btn"
+                      onClick={() => {
+                        const updated = [...visible];
+                        updated[index] = !updated[index];
+                        setVisible(updated);
+                      }}
+                    >
+                      {visible[index]
+                        ? "🙈 Hide Solution"
+                        : "👨‍💻 Show Solution"}
+                    </button>
+
+                    {/* ANSWER */}
+                    {visible[index] && (
+                      <div className="coding-answer">
+
+                        <div className="code-header">
+                          <h4>💡 Solution:</h4>
+
+                          <button
+                            className="copy-btn"
+                            onClick={() => copyToClipboard(item.code, index)}
+                          >
+                            {copiedIndex === index
+                              ? "✔ Copied"
+                              : "📋 Copy"}
+                          </button>
+                        </div>
+
+                        <SyntaxHighlighter
+                          language="java"
+                          style={tomorrow}
+                          showLineNumbers
+                        >
+                          {item.code}
+                        </SyntaxHighlighter>
+
+                        {item.explanation && (
+                          <p className="explanation">
+                            <b>Explanation:</b> {item.explanation}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <div className="no-results">
+                  <h3>❌ No coding question found</h3>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         )}

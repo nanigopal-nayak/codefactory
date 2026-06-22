@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
-import "./Db.css";
+import "./Java.css";
 import dbQuestions from "../data/dbQuestions";
 import dbMCQ from "../data/dbMCQ";
 import dbCoding from "../data/dbCoding";
@@ -20,6 +20,10 @@ const Db = () => {
 
     const [copiedIndex, setCopiedIndex] = useState(null);
     const [openIndex, setOpenIndex] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const questionsPerPage = 10;
 
     const toggleAnswer = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -72,7 +76,23 @@ const Db = () => {
             setCopiedIndex(null);
         }, 2000);
     };
+    const indexOfLastQuestion = currentPage * questionsPerPage;
+    const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
 
+    const currentQuestions = dbQuestions.slice(
+        indexOfFirstQuestion,
+        indexOfLastQuestion
+    );
+
+    const totalPages = Math.ceil(
+        dbQuestions.length / questionsPerPage
+    );
+
+    const filteredCoding = dbCoding.filter(
+        (item) =>
+            item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            item.question.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     return (
         <div className="page-container">
 
@@ -109,47 +129,73 @@ const Db = () => {
             {/* Content */}
             <main className="page-content">
                 {activeTab === "qa" && (
-                <div className="qa-grid">
-                    {dbQuestions.map((item, index) => (
-                        <div key={index} className="qa-block">
+                    <>
+                        <div className="qa-grid">
+                            {currentQuestions.map((item, index) => (
+                                <div key={index} className="qa-block">
 
-                            <div className="qa-row">
-                                <h3>
-                                    {index + 1}. {item.question}
-                                </h3>
+                                    <div className="qa-row">
+                                        <h3>
+                                            {indexOfFirstQuestion + index + 1}. {item.question}
+                                        </h3>
 
-                                <div className="action">
-                                    <button onClick={() => toggleAnswer(index)}>
-                                        {openIndex === index
-                                            ? "Hide Answer"
-                                            : "Show Answer"}
-                                    </button>
-                                </div>
-                            </div>
+                                        <div className="action">
+                                            <button
+                                                onClick={() =>
+                                                    toggleAnswer(indexOfFirstQuestion + index)
+                                                }
+                                            >
+                                                {openIndex === indexOfFirstQuestion + index
+                                                    ? "Hide Answer"
+                                                    : "Show Answer"}
+                                            </button>
+                                        </div>
+                                    </div>
 
-                            {openIndex === index && (
-                                <div className="answer-box">
+                                    {openIndex === indexOfFirstQuestion + index && (
+                                        <div className="answer-box">
 
-                                    {Array.isArray(item.answer) ? (
-                                        item.answer.map((ans, i) => (
-                                            <div key={i} className="answer-item">
-                                                <span className="tick">✔</span>
-                                                <p>{ans}</p>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <div className="answer-item">
-                                            <span className="tick">✔</span>
-                                            <p>{item.answer}</p>
+                                            {Array.isArray(item.answer) ? (
+                                                item.answer.map((ans, i) => (
+                                                    <div key={i} className="answer-item">
+                                                        <span className="tick">✔</span>
+                                                        <p>{ans}</p>
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <div className="answer-item">
+                                                    <span className="tick">✔</span>
+                                                    <p>{item.answer}</p>
+                                                </div>
+                                            )}
+
                                         </div>
                                     )}
 
                                 </div>
-                            )}
-
+                            ))}
                         </div>
-                    ))}
-                </div>
+
+                        <div className="pagination">
+                            <button
+                                disabled={currentPage === 1}
+                                onClick={() => setCurrentPage(currentPage - 1)}
+                            >
+                                ⬅ Previous
+                            </button>
+
+                            <span>
+                                Page {currentPage} of {totalPages}
+                            </span>
+
+                            <button
+                                disabled={currentPage === totalPages}
+                                onClick={() => setCurrentPage(currentPage + 1)}
+                            >
+                                Next ➡
+                            </button>
+                        </div>
+                    </>
                 )}
                 {activeTab === "mcq" && !showResult && (
                     <div className="mcq-container">
@@ -229,61 +275,82 @@ const Db = () => {
                     <div className="tab-section coding-container">
                         <h2>Database Coding Section</h2>
 
+                        <input
+                            type="text"
+                            placeholder="🔍 Search coding question..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="search-box"
+                        />
+
                         <div className="coding-grid">
-                            {dbCoding.map((item, index) => (
-                                <div key={index} className="coding-card">
-                                    <div className="coding-question">
-                                        <h3>❓ {item.title}</h3>
-                                        <p>{item.question}</p>
-                                    </div>
+                            {filteredCoding.length > 0 ? (
+                                filteredCoding.map((item, index) => (
+                                    <div key={index} className="coding-card">
 
-                                    <button
-                                        className="show-btn"
-                                        onClick={() => {
-                                            const updated = [...visible];
-                                            updated[index] = !updated[index];
-                                            setVisible(updated);
-                                        }}
-                                    >
-                                        {visible[index]
-                                            ? "🙈 Hide Solution"
-                                            : "👨‍💻 Show Solution"}
-                                    </button>
-
-                                    {visible[index] && (
-                                        <div className="coding-answer">
-                                            <div className="code-header">
-                                                <h4>💡 Solution:</h4>
-
-                                                <button
-                                                    className="copy-btn"
-                                                    onClick={() =>
-                                                        copyToClipboard(item.code, index)
-                                                    }
-                                                >
-                                                    {copiedIndex === index
-                                                        ? "✔ Copied"
-                                                        : "📋 Copy"}
-                                                </button>
-                                            </div>
-
-                                            <SyntaxHighlighter
-                                                language="sql"
-                                                style={tomorrow}
-                                                showLineNumbers
-                                            >
-                                                {item.code}
-                                            </SyntaxHighlighter>
-
-                                            {item.explanation && (
-                                                <p className="explanation">
-                                                    <b>Explanation:</b> {item.explanation}
-                                                </p>
-                                            )}
+                                        <div className="coding-question">
+                                            <h3>❓ {item.title}</h3>
+                                            <p>{item.question}</p>
                                         </div>
-                                    )}
+
+                                        <button
+                                            className="show-btn"
+                                            onClick={() => {
+                                                const originalIndex = dbCoding.indexOf(item);
+
+                                                const updated = [...visible];
+                                                updated[originalIndex] = !updated[originalIndex];
+                                                setVisible(updated);
+                                            }}
+                                        >
+                                            {visible[dbCoding.indexOf(item)]
+                                                ? "🙈 Hide Solution"
+                                                : "👨‍💻 Show Solution"}
+                                        </button>
+
+                                        {visible[dbCoding.indexOf(item)] && (
+                                            <div className="coding-answer">
+
+                                                <div className="code-header">
+                                                    <h4>💡 Solution:</h4>
+
+                                                    <button
+                                                        className="copy-btn"
+                                                        onClick={() =>
+                                                            copyToClipboard(
+                                                                item.code,
+                                                                dbCoding.indexOf(item)
+                                                            )
+                                                        }
+                                                    >
+                                                        {copiedIndex === dbCoding.indexOf(item)
+                                                            ? "✔ Copied"
+                                                            : "📋 Copy"}
+                                                    </button>
+                                                </div>
+
+                                                <SyntaxHighlighter
+                                                    language="sql"
+                                                    style={tomorrow}
+                                                    showLineNumbers
+                                                >
+                                                    {item.code}
+                                                </SyntaxHighlighter>
+
+                                                {item.explanation && (
+                                                    <p className="explanation">
+                                                        <b>Explanation:</b> {item.explanation}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="no-results">
+                                    <h3>❌ No coding question found</h3>
                                 </div>
-                            ))}
+                            )}
                         </div>
                     </div>
                 )}
