@@ -78,6 +78,7 @@ const Home = () => {
                             onClick={() => {
                                 if (card.id === 1) navigate("/java");
                                 if (card.id === 2) navigate("/db");
+                                if (card.id === 3) navigate("/spring");
                             }}
                         >
                             Let's Learn
