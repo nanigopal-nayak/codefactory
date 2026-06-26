@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 import "./Java.css";
 import dbQuestions from "../data/dbQuestions";
 import dbMCQ from "../data/dbMCQ";
@@ -24,6 +25,7 @@ const Db = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const questionsPerPage = 10;
+    const navigate = useNavigate();
 
     const toggleAnswer = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -98,12 +100,14 @@ const Db = () => {
 
             {/* Navbar */}
             <nav className="navbar">
+                {/* Left */}
                 <div className="nav-left">
                     <img src={logo} alt="Logo" className="logo" />
                     <h2>Code Nexus</h2>
                 </div>
 
-                <div className="nav-right">
+                {/* Center */}
+                <div className="nav-center">
                     <button
                         className={activeTab === "qa" ? "active-tab" : ""}
                         onClick={() => setActiveTab("qa")}
@@ -123,6 +127,16 @@ const Db = () => {
                         onClick={() => setActiveTab("coding")}
                     >
                         Coding
+                    </button>
+                </div>
+
+                {/* Right */}
+                <div className="nav-right">
+                    <button
+                        className="back-btn"
+                        onClick={() => navigate(-1)}
+                    >
+                        ⬅ Back
                     </button>
                 </div>
             </nav>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./Java.css";
 import javaQuestions from "../data/javaQuestions";
@@ -24,6 +25,7 @@ const Java = () => {
   const [copiedIndex, setCopiedIndex] = useState(null);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const qaData = javaQuestions;
 
@@ -92,12 +94,14 @@ const Java = () => {
 
       {/* Navbar */}
       <nav className="navbar">
+        {/* Left */}
         <div className="nav-left">
           <img src={logo} alt="Logo" className="logo" />
           <h2>Code Nexus</h2>
         </div>
 
-        <div className="nav-right">
+        {/* Center */}
+        <div className="nav-center">
           <button
             className={activeTab === "qa" ? "active-tab" : ""}
             onClick={() => setActiveTab("qa")}
@@ -117,6 +121,16 @@ const Java = () => {
             onClick={() => setActiveTab("coding")}
           >
             Coding
+          </button>
+        </div>
+
+        {/* Right */}
+        <div className="nav-right">
+          <button
+            className="back-btn"
+            onClick={() => navigate(-1)}
+          >
+            ⬅ Back
           </button>
         </div>
       </nav>
