@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import "./Java.css";
@@ -26,21 +26,6 @@ const Db = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const questionsPerPage = 10;
     const navigate = useNavigate();
-
-    const [darkMode, setDarkMode] = useState(() => {
-        return localStorage.getItem("theme") === "dark";
-    });
-
-    useEffect(() => {
-        if (darkMode) {
-            document.body.classList.add("dark-theme");
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.body.classList.remove("dark-theme");
-            localStorage.setItem("theme", "light");
-        }
-    }, [darkMode]);
-
 
     const toggleAnswer = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -147,21 +132,12 @@ const Db = () => {
 
                 {/* Right */}
                 <div className="nav-right">
-
-                    <button
-                        className="theme-btn"
-                        onClick={() => setDarkMode(!darkMode)}
-                    >
-                        {darkMode ? "☀ Light" : "🌙 Dark"}
-                    </button>
-
                     <button
                         className="back-btn"
                         onClick={() => navigate(-1)}
                     >
                         ⬅ Back
                     </button>
-
                 </div>
             </nav>
             {/* Content */}

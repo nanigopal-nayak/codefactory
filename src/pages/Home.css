@@ -150,31 +150,47 @@
       DARK THEME
 =========================== */
 
-body.dark-theme {
+/* Home Dark Theme */
+
+.home-dark {
     background: #121212;
     color: white;
 }
 
-body.dark-theme .navbar {
+.home-dark .navbar {
     background: #1b1b1b;
 }
 
-body.dark-theme .card {
+.home-dark .card {
     background: #222;
     color: white;
 }
-body.dark-theme .card h3 {
-    color: #ffffff;
+
+.home-dark .card h3 {
+    color: white;
 }
-body.dark-theme .footer {
+
+.home-dark .card p {
+    color: #d6d6d6;
+}
+
+.home-dark .card-logo {
+    background: #333;
+}
+
+.home-dark .footer {
     background: #1b1b1b;
 }
 
-body.dark-theme .learn-btn {
+.home-dark .learn-btn {
     background: #4CAF50;
 }
 
-body.dark-theme .theme-btn {
+.home-dark .learn-btn:hover {
+    background: #388E3C;
+}
+
+.home-dark .theme-btn {
     background: white;
     color: black;
 }

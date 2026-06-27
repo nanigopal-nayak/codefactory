@@ -65,7 +65,7 @@ const Home = () => {
     ];
 
     return (
-        <div className="home-container">
+        <div className={`home-container ${darkMode ? "home-dark" : "home-light"}`}>
             {/* Navbar */}
             <nav className="navbar">
                 <div className="nav-left">
