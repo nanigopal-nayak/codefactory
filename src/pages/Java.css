@@ -96,7 +96,11 @@
 
 /* QA Card */
 .qa-block {
-  background: white;
+ background: linear-gradient(
+  135deg,
+  rgb(85, 138, 176),
+  rgba(232, 242, 255, 1)
+);
   border-radius: 12px;
   padding: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -162,7 +166,11 @@
   text-align: center;
 }
 .mcq-container {
-  background: white;
+ background: linear-gradient(
+  135deg,
+  rgb(85, 138, 176),
+  rgba(232, 242, 255, 1)
+);
   padding: 25px;
   border-radius: 10px;
   max-width: 700px;
@@ -181,8 +189,12 @@
 
 .options button {
   padding: 10px;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
+  border: 1px solid #82b5c9;
+  background: linear-gradient(
+  135deg,
+  rgb(197, 206, 212),
+  rgb(209, 219, 231)
+);
   cursor: pointer;
   border-radius: 6px;
   transition: 0.3s;
