@@ -131,3 +131,50 @@
   text-align: center;
   padding: 20px;
 }
+/* Theme Button */
+
+.theme-btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.05);
+}
+/* ===========================
+      DARK THEME
+=========================== */
+
+body.dark-theme {
+    background: #121212;
+    color: white;
+}
+
+body.dark-theme .navbar {
+    background: #1b1b1b;
+}
+
+body.dark-theme .card {
+    background: #222;
+    color: white;
+}
+body.dark-theme .card h3 {
+    color: #ffffff;
+}
+body.dark-theme .footer {
+    background: #1b1b1b;
+}
+
+body.dark-theme .learn-btn {
+    background: #4CAF50;
+}
+
+body.dark-theme .theme-btn {
+    background: white;
+    color: black;
+}

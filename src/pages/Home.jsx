@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./Home.css";
 import logo from "../assets/logo.png";
 import java from "../assets/java.png";
@@ -11,6 +12,19 @@ import javascript from "../assets/js.png";
 const Home = () => {
 
     const navigate = useNavigate();
+    const [darkMode, setDarkMode] = useState(() => {
+        return localStorage.getItem("theme") === "dark";
+    });
+
+    useEffect(() => {
+        if (darkMode) {
+            document.body.classList.add("dark-theme");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.body.classList.remove("dark-theme");
+            localStorage.setItem("theme", "light");
+        }
+    }, [darkMode]);
 
     const cards = [
         {
@@ -58,6 +72,12 @@ const Home = () => {
                     <img src={logo} alt="Code Factory Logo" className="logo" />
                     <h2>Code Nexus</h2>
                 </div>
+                <button
+                    className="theme-btn"
+                    onClick={() => setDarkMode(!darkMode)}
+                >
+                    {darkMode ? "☀ Light" : "🌙 Dark"}
+                </button>
             </nav>
 
             {/* Cards Section */}
