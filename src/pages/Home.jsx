@@ -99,6 +99,8 @@ const Home = () => {
                                 if (card.id === 1) navigate("/java");
                                 if (card.id === 2) navigate("/db");
                                 if (card.id === 3) navigate("/spring");
+                                if (card.id === 4) navigate("/javascript");
+                                if (card.id === 5) navigate("/react");
                             }}
                         >
                             Let's Learn

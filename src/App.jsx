@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import Java from "./pages/Java";
 import Db from "./pages/Db";
 import Spring from "./pages/Spring";
+import JavaScript from "./pages/JavaScript";
+import React from "./pages/React"; 
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <Route path="/java" element={<Java />} />
       <Route path="/db" element={<Db />} />
       <Route path="/spring" element={<Spring />} />
+      <Route path="/javascript" element={<JavaScript />} />
+      <Route path="/react" element={<React />} />
     </Routes>
   );
 }
