@@ -26,6 +26,7 @@ const Db = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const questionsPerPage = 10;
     const navigate = useNavigate();
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleAnswer = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -106,25 +107,34 @@ const Db = () => {
                     <h2>Code Nexus</h2>
                 </div>
 
-                {/* Center */}
+                {/* Desktop Navigation */}
                 <div className="nav-center">
                     <button
                         className={activeTab === "qa" ? "active-tab" : ""}
-                        onClick={() => setActiveTab("qa")}
+                        onClick={() => {
+                            setActiveTab("qa");
+                            setMenuOpen(false);
+                        }}
                     >
                         Q&A
                     </button>
 
                     <button
                         className={activeTab === "mcq" ? "active-tab" : ""}
-                        onClick={() => setActiveTab("mcq")}
+                        onClick={() => {
+                            setActiveTab("mcq");
+                            setMenuOpen(false);
+                        }}
                     >
                         MCQ
                     </button>
 
                     <button
                         className={activeTab === "coding" ? "active-tab" : ""}
-                        onClick={() => setActiveTab("coding")}
+                        onClick={() => {
+                            setActiveTab("coding");
+                            setMenuOpen(false);
+                        }}
                     >
                         Coding
                     </button>
@@ -132,6 +142,15 @@ const Db = () => {
 
                 {/* Right */}
                 <div className="nav-right">
+
+                    {/* Mobile Hamburger */}
+                    <button
+                        className="menu-btn"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                    >
+                        ☰
+                    </button>
+
                     <button
                         className="back-btn"
                         onClick={() => navigate(-1)}
@@ -139,6 +158,41 @@ const Db = () => {
                         ⬅ Back
                     </button>
                 </div>
+
+                {/* Mobile Menu */}
+                {menuOpen && (
+                    <div className="mobile-menu">
+                        <button
+                            className={activeTab === "qa" ? "active-tab" : ""}
+                            onClick={() => {
+                                setActiveTab("qa");
+                                setMenuOpen(false);
+                            }}
+                        >
+                            Q&A
+                        </button>
+
+                        <button
+                            className={activeTab === "mcq" ? "active-tab" : ""}
+                            onClick={() => {
+                                setActiveTab("mcq");
+                                setMenuOpen(false);
+                            }}
+                        >
+                            MCQ
+                        </button>
+
+                        <button
+                            className={activeTab === "coding" ? "active-tab" : ""}
+                            onClick={() => {
+                                setActiveTab("coding");
+                                setMenuOpen(false);
+                            }}
+                        >
+                            Coding
+                        </button>
+                    </div>
+                )}
             </nav>
             {/* Content */}
             <main className="page-content">
