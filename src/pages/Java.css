@@ -329,6 +329,8 @@
   border-radius: 10px;
   margin-top: 10px;
   border-left: 4px solid #4cafef;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .coding-answer h4 {
@@ -660,6 +662,21 @@
   }
 }
 
+.code-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+.coding-answer pre,
+.coding-answer code {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+.coding-card {
+  min-width: 0;  
+  overflow: hidden;
+}
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .qa-grid {
@@ -673,5 +690,23 @@
   .nav-right button {
     padding: 6px 10px;
     font-size: 13px;
+  }
+   .coding-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coding-card {
+    padding: 12px;
+  }
+
+  .code-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .copy-btn,
+  .show-btn {
+    width: 100%;
   }
 }

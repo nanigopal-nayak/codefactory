@@ -431,13 +431,15 @@ const Java = () => {
                           </button>
                         </div>
 
-                        <SyntaxHighlighter
-                          language="java"
-                          style={tomorrow}
-                          showLineNumbers
-                        >
-                          {item.code}
-                        </SyntaxHighlighter>
+                        <div className="code-scroll">
+  <SyntaxHighlighter
+    language="java"
+    style={tomorrow}
+    showLineNumbers
+  >
+    {item.code}
+  </SyntaxHighlighter>
+</div>
 
                         {item.explanation && (
                           <p className="explanation">
