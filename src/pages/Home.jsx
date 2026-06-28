@@ -15,6 +15,8 @@ const Home = () => {
     const [darkMode, setDarkMode] = useState(() => {
         return localStorage.getItem("theme") === "dark";
     });
+    const [searchTerm, setSearchTerm] = useState("");
+    const [isListening, setIsListening] = useState(false);
 
     useEffect(() => {
         if (darkMode) {
@@ -63,15 +65,49 @@ const Home = () => {
                 "Create interactive user interfaces using React components, Hooks, state management, and routing.",
         },
     ];
+    const startVoiceSearch = () => {
+        const SpeechRecognition =
+            window.SpeechRecognition || window.webkitSpeechRecognition;
 
+        if (!SpeechRecognition) {
+            alert("Voice search is not supported in this browser.");
+            return;
+        }
+
+        const recognition = new SpeechRecognition();
+
+        recognition.lang = "en-US";
+        recognition.interimResults = false;
+
+        setIsListening(true);
+
+        recognition.start();
+
+        recognition.onresult = (event) => {
+            const text = event.results[0][0].transcript.toLowerCase().trim();
+
+            // ONLY update search (same as typing)
+            setSearchTerm(text);
+        };
+
+        recognition.onend = () => {
+            setIsListening(false);
+        };
+
+        recognition.onerror = () => {
+            setIsListening(false);
+        };
+    };
     return (
         <div className={`home-container ${darkMode ? "home-dark" : "home-light"}`}>
+
             {/* Navbar */}
             <nav className="navbar">
                 <div className="nav-left">
                     <img src={logo} alt="Code Factory Logo" className="logo" />
                     <h2>Code Nexus</h2>
                 </div>
+
                 <button
                     className="theme-btn"
                     onClick={() => setDarkMode(!darkMode)}
@@ -80,39 +116,68 @@ const Home = () => {
                 </button>
             </nav>
 
-            {/* Cards Section */}
-            <main className="cards-section">
-                {cards.map((card) => (
-                    <div key={card.id} className="card">
+            {/* Search */}
+            <div className="home-search-wrapper">
+                <input
+                    type="text"
+                    placeholder="🔍 Search Technology..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="home-search-box"
+                />
 
-                        <div className="card-logo">
-                            <img src={card.image} alt={card.title} />
+                <button
+                    className={`home-voice-search ${isListening ? "active" : ""}`}
+                    onClick={startVoiceSearch}
+                    title="Voice Search"
+                >
+                    🎙️
+                </button>
+            </div>
+
+            {/* Cards */}
+            <main className="cards-section">
+
+                {cards
+                    .filter((card) =>
+                        card.title.toLowerCase().includes(searchTerm.toLowerCase())
+                    )
+                    .map((card) => (
+
+                        <div key={card.id} className="card">
+
+                            <div className="card-logo">
+                                <img src={card.image} alt={card.title} />
+                            </div>
+
+                            <h3>{card.title}</h3>
+
+                            <p>{card.description}</p>
+
+                            <button
+                                className="learn-btn"
+                                onClick={() => {
+                                    if (card.id === 1) navigate("/java");
+                                    if (card.id === 2) navigate("/db");
+                                    if (card.id === 3) navigate("/spring");
+                                    if (card.id === 4) navigate("/javascript");
+                                    if (card.id === 5) navigate("/react");
+                                }}
+                            >
+                                Let's Learn
+                            </button>
+
                         </div>
 
-                        <h3>{card.title}</h3>
+                    ))}
 
-                        <p>{card.description}</p>
-
-                        <button
-                            className="learn-btn"
-                            onClick={() => {
-                                if (card.id === 1) navigate("/java");
-                                if (card.id === 2) navigate("/db");
-                                if (card.id === 3) navigate("/spring");
-                                if (card.id === 4) navigate("/javascript");
-                                if (card.id === 5) navigate("/react");
-                            }}
-                        >
-                            Let's Learn
-                        </button>
-
-                    </div>
-                ))}
             </main>
+
             {/* Footer */}
             <footer className="footer">
                 <p>© 2026 Code Factory. All Rights Reserved.</p>
             </footer>
+
         </div>
     );
 };
