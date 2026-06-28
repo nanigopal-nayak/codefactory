@@ -27,6 +27,8 @@ const Db = () => {
     const questionsPerPage = 10;
     const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isListening, setIsListening] = useState(false);
+
 
     const toggleAnswer = (index) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -96,6 +98,38 @@ const Db = () => {
             item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             item.question.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    const startVoiceSearch = () => {
+        const SpeechRecognition =
+            window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+            alert("Voice search is not supported in this browser.");
+            return;
+        }
+
+        const recognition = new SpeechRecognition();
+
+        recognition.lang = "en-US";
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        setIsListening(true);
+
+        recognition.start();
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            setSearchTerm(transcript);
+        };
+
+        recognition.onend = () => {
+            setIsListening(false);
+        };
+
+        recognition.onerror = () => {
+            setIsListening(false);
+        };
+    };
     return (
         <div className="page-container">
 
@@ -341,15 +375,25 @@ const Db = () => {
                 )}
                 {activeTab === "coding" && (
                     <div className="tab-section coding-container">
-                        <h2>Database Coding Section</h2>
+                        <h2>Coding Section</h2>
 
-                        <input
-                            type="text"
-                            placeholder="🔍 Search coding question..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="search-box"
-                        />
+                        <div className="search-wrapper">
+                            <input
+                                type="text"
+                                placeholder="🔍 Search coding question..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="search-box"
+                            />
+
+                            <button
+                                className={`voice-search ${isListening ? "active" : ""}`}
+                                onClick={startVoiceSearch}
+                                title="Voice Search"
+                            >
+                                🎙️
+                            </button>
+                        </div>
 
                         <div className="coding-grid">
                             {filteredCoding.length > 0 ? (

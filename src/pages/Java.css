@@ -49,7 +49,7 @@
 }
 
 .nav-center button:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* Right Side */
@@ -96,11 +96,9 @@
 
 /* QA Card */
 .qa-block {
- background: linear-gradient(
-  135deg,
-  rgb(85, 138, 176),
-  rgba(232, 242, 255, 1)
-);
+  background: linear-gradient(135deg,
+      rgb(85, 138, 176),
+      rgba(232, 242, 255, 1));
   border-radius: 12px;
   padding: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -165,12 +163,11 @@
   border-radius: 10px;
   text-align: center;
 }
+
 .mcq-container {
- background: linear-gradient(
-  135deg,
-  rgb(85, 138, 176),
-  rgba(232, 242, 255, 1)
-);
+  background: linear-gradient(135deg,
+      rgb(85, 138, 176),
+      rgba(232, 242, 255, 1));
   padding: 25px;
   border-radius: 10px;
   max-width: 700px;
@@ -190,11 +187,9 @@
 .options button {
   padding: 10px;
   border: 1px solid #82b5c9;
-  background: linear-gradient(
-  135deg,
-  rgb(197, 206, 212),
-  rgb(209, 219, 231)
-);
+  background: linear-gradient(135deg,
+      rgb(197, 206, 212),
+      rgb(209, 219, 231));
   cursor: pointer;
   border-radius: 6px;
   transition: 0.3s;
@@ -236,6 +231,7 @@
 .result-box h1 {
   color: #007bff;
 }
+
 .restart-btn {
   margin-top: 20px;
   padding: 12px 25px;
@@ -258,6 +254,7 @@
 .restart-btn:active {
   transform: scale(0.96);
 }
+
 .option-btn {
   padding: 10px;
   border: 1px solid #ccc;
@@ -287,6 +284,7 @@
   color: white;
   border: 1px solid #dc3545;
 }
+
 .coding-container {
   padding: 20px;
 }
@@ -297,7 +295,7 @@
   padding: 18px;
   margin-bottom: 18px;
   border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .coding-question h3 {
@@ -352,6 +350,7 @@
   color: #ccc;
   font-size: 14px;
 }
+
 .code-header {
   display: flex;
   justify-content: space-between;
@@ -378,6 +377,7 @@
 .copy-btn:active {
   transform: scale(0.95);
 }
+
 .coding-container {
   padding: 20px;
 }
@@ -395,7 +395,7 @@
   color: white;
   padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 /* Question */
@@ -435,6 +435,7 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
 .search-box {
   width: 100%;
   max-width: 600px;
@@ -493,6 +494,7 @@
   font-size: 16px;
   font-weight: bold;
 }
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .coding-grid {
@@ -507,6 +509,7 @@
   text-align: center;
   padding: 10px;
 }
+
 /* Hamburger Button */
 .menu-btn {
   display: none;
@@ -553,7 +556,7 @@
     border-radius: 10px;
     overflow: hidden;
     z-index: 1000;
-    box-shadow: 0 8px 20px rgba(0,0,0,.35);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
   }
 
   .mobile-menu button {
@@ -579,6 +582,81 @@
   /* Prevent Logo Text Wrapping */
   .nav-left h2 {
     font-size: 18px;
+  }
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  margin: 20px auto;
+}
+
+.search-box {
+  width: 100%;
+  height: 50px;
+  padding: 0 55px 0 18px;
+  border: 2px solid #dbe7ff;
+  border-radius: 30px;
+  outline: none;
+  font-size: 16px;
+  background: #fff;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(30, 123, 255, 0.08);
+}
+
+.search-box:focus {
+  border-color: #1e7bff;
+  box-shadow: 0 0 12px rgba(30, 123, 255, 0.25);
+}
+
+.voice-search {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+
+  width: 38px;
+  height: 38px;
+
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e7bff, #4aa3ff);
+  color: white;
+  font-size: 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.voice-search:hover {
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 0 15px rgba(30, 123, 255, 0.4);
+}
+
+.voice-search.active {
+  background: linear-gradient(135deg, #ff3b3b, #ff6b6b);
+  animation: listening 1s infinite;
+}
+
+@keyframes listening {
+  0% {
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 0 0 rgba(255, 59, 59, 0.5);
+  }
+
+  50% {
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 0 20px rgba(255, 59, 59, 0.7);
+  }
+
+  100% {
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 0 0 rgba(255, 59, 59, 0.5);
   }
 }
 
