@@ -6,6 +6,12 @@ import Spring from "./pages/Spring";
 import JavaScript from "./pages/JavaScript";
 import React from "./pages/React"; 
 
+import Certificate from "./pages/Certificate";
+import Instructions from "./pages/Instructions";
+import Exam from "./pages/Exam";
+import Result from "./pages/Result";
+import FinalCertificate from "./pages/FinalCertificate";
+
 function App() {
   return (
     <Routes>
@@ -15,6 +21,12 @@ function App() {
       <Route path="/spring" element={<Spring />} />
       <Route path="/javascript" element={<JavaScript />} />
       <Route path="/react" element={<React />} />
+
+      <Route path="/certificate" element={<Certificate />} />
+      <Route path="/instructions" element={<Instructions />} />
+      <Route path="/exam" element={<Exam />} />
+      <Route path="/result" element={<Result />} />
+      <Route path="/final-certificate" element={<FinalCertificate />} />
     </Routes>
   );
 }

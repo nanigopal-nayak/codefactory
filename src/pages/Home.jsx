@@ -7,6 +7,7 @@ import react from "../assets/react.svg";
 import database from "../assets/db.png";
 import SpringBoot from "../assets/framework.png";
 import javascript from "../assets/js.png";
+import certificate from "../assets/certificate.png";
 
 
 const Home = () => {
@@ -64,6 +65,19 @@ const Home = () => {
             description:
                 "Create interactive user interfaces using React components, Hooks, state management, and routing.",
         },
+        {
+            id: 6,
+            title: "Java Full Stack Certification",
+            displayTitle: (
+                <>
+                    Java Full Stack <br />
+                    Certification
+                </>
+            ),
+            image: certificate,
+            description:
+                "Take a comprehensive Java Full Stack assessment covering Core Java, SQL, Spring Boot, JavaScript, and React. Pass the exam to earn your certificate.",
+        }
     ];
     const startVoiceSearch = () => {
         const SpeechRecognition =
@@ -150,7 +164,7 @@ const Home = () => {
                                 <img src={card.image} alt={card.title} />
                             </div>
 
-                            <h3>{card.title}</h3>
+                            <h3>{card.displayTitle || card.title}</h3>
 
                             <p>{card.description}</p>
 
@@ -162,6 +176,7 @@ const Home = () => {
                                     if (card.id === 3) navigate("/spring");
                                     if (card.id === 4) navigate("/javascript");
                                     if (card.id === 5) navigate("/react");
+                                    if (card.id === 6) navigate("/certificate");
                                 }}
                             >
                                 Let's Learn
