@@ -11,6 +11,7 @@ import Instructions from "./pages/Instructions";
 import Exam from "./pages/Exam";
 import Result from "./pages/Result";
 import FinalCertificate from "./pages/FinalCertificate";
+import CvGenerator from "./pages/CvGenerator";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
       <Route path="/exam" element={<Exam />} />
       <Route path="/result" element={<Result />} />
       <Route path="/final-certificate" element={<FinalCertificate />} />
+
+      <Route path="/cv" element={<CvGenerator />} />
     </Routes>
   );
 }

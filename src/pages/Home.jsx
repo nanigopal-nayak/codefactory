@@ -8,6 +8,7 @@ import database from "../assets/db.png";
 import SpringBoot from "../assets/framework.png";
 import javascript from "../assets/js.png";
 import certificate from "../assets/certificate.png";
+import cvGenerator from "../assets/cv.png";
 
 
 const Home = () => {
@@ -77,6 +78,13 @@ const Home = () => {
             image: certificate,
             description:
                 "Take a comprehensive Java Full Stack assessment covering Core Java, SQL, Spring Boot, JavaScript, and React. Pass the exam to earn your certificate.",
+        },
+        {
+            id: 7,
+            title: "CV Generator",
+            image: cvGenerator, 
+            description:
+                "Create a professional ATS-friendly resume in minutes. Add your personal details, education, skills, projects, experience, certifications, and download your CV as a PDF.",
         }
     ];
     const startVoiceSearch = () => {
@@ -177,6 +185,7 @@ const Home = () => {
                                     if (card.id === 4) navigate("/javascript");
                                     if (card.id === 5) navigate("/react");
                                     if (card.id === 6) navigate("/certificate");
+                                    if (card.id === 7) navigate("/cv");
                                 }}
                             >
                                 Let's Learn
