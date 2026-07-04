@@ -12,6 +12,7 @@ import Exam from "./pages/Exam";
 import Result from "./pages/Result";
 import FinalCertificate from "./pages/FinalCertificate";
 import CvGenerator from "./pages/CvGenerator";
+import Jobs from "./pages/Jobs";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
       <Route path="/final-certificate" element={<FinalCertificate />} />
 
       <Route path="/cv" element={<CvGenerator />} />
+
+      <Route path="/jobs" element={<Jobs />} />
     </Routes>
   );
 }

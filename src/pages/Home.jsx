@@ -9,6 +9,7 @@ import SpringBoot from "../assets/framework.png";
 import javascript from "../assets/js.png";
 import certificate from "../assets/certificate.png";
 import cvGenerator from "../assets/cv.png";
+import applyJobs from "../assets/working-hours.png";
 
 
 const Home = () => {
@@ -82,9 +83,16 @@ const Home = () => {
         {
             id: 7,
             title: "CV Generator",
-            image: cvGenerator, 
+            image: cvGenerator,
             description:
                 "Create a professional ATS-friendly resume in minutes. Add your personal details, education, skills, projects, experience, certifications, and download your CV as a PDF.",
+        },
+        {
+            id: 8,
+            title: "Apply Jobs",
+            image: applyJobs,
+            description:
+                "Explore the latest job opportunities from top companies. Filter jobs by role, location, experience, and apply directly through the company careers page or job portal.",
         }
     ];
     const startVoiceSearch = () => {
@@ -186,9 +194,16 @@ const Home = () => {
                                     if (card.id === 5) navigate("/react");
                                     if (card.id === 6) navigate("/certificate");
                                     if (card.id === 7) navigate("/cv");
+                                    if (card.id === 8) navigate("/jobs");
                                 }}
                             >
-                                Let's Learn
+                                {card.id === 6
+                                    ? "Start Exam"
+                                    : card.id === 7
+                                        ? "Create CV"
+                                        : card.id === 8
+                                            ? "Apply Now"
+                                            : "Let's Learn"}
                             </button>
 
                         </div>
