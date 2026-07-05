@@ -114,6 +114,7 @@
 .qa-row h3 {
   margin: 0;
   font-size: 16px;
+  color: #eed907;
   flex: 1;
 }
 
@@ -176,6 +177,7 @@
 
 .mcq-box h3 {
   margin-bottom: 20px;
+  color: #eed907;
 }
 
 .options {

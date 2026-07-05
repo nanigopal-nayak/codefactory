@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./Java.css";
+import DSA from "./DSA.jsx";
 import javaQuestions from "../data/javaQuestions";
 import javaMCQ from "../data/javaMCQ";
 import javaCoding from "../data/javaCoding";
@@ -165,6 +166,15 @@ const Java = () => {
           >
             Coding
           </button>
+          <button
+            className={activeTab === "dsa" ? "active-tab" : ""}
+            onClick={() => {
+              setActiveTab("dsa");
+              setMenuOpen(false);
+            }}
+          >
+            DSA
+          </button>
         </div>
 
         {/* Right */}
@@ -217,6 +227,15 @@ const Java = () => {
               }}
             >
               Coding
+            </button>
+            <button
+              className={activeTab === "dsa" ? "active-tab" : ""}
+              onClick={() => {
+                setActiveTab("dsa");
+                setMenuOpen(false);
+              }}
+            >
+              DSA
             </button>
           </div>
         )}
@@ -432,14 +451,14 @@ const Java = () => {
                         </div>
 
                         <div className="code-scroll">
-  <SyntaxHighlighter
-    language="java"
-    style={tomorrow}
-    showLineNumbers
-  >
-    {item.code}
-  </SyntaxHighlighter>
-</div>
+                          <SyntaxHighlighter
+                            language="java"
+                            style={tomorrow}
+                            showLineNumbers
+                          >
+                            {item.code}
+                          </SyntaxHighlighter>
+                        </div>
 
                         {item.explanation && (
                           <p className="explanation">
@@ -458,6 +477,7 @@ const Java = () => {
             </div>
           </div>
         )}
+        {activeTab === "dsa" && <DSA />}
       </main>
 
       {/* Footer */}
