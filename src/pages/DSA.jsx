@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DSA.css";
+import Arrays from "./Array.jsx";
 import { useNavigate } from "react-router-dom";
 
 const DSA = () => {
+    const [activeTab, setActiveTab] = useState("home");
+    if (activeTab === "arrays") {
+        return (
+            <div className="dsa-container">
+
+                <button
+                    className="dsa-btn-secondary"
+                    onClick={() => setActiveTab("home")}
+                >
+                    ← Back
+                </button>
+
+                <Arrays />
+            </div>
+        );
+    }
     return (
         <div className="dsa-container">
 
@@ -25,7 +42,7 @@ const DSA = () => {
                     <div className="dsa-buttons">
                         <button
                             className="dsa-btn-primary"
-                           onClick={() => document.querySelector(".dsa-about").scrollIntoView({ behavior: "smooth" })}
+                            onClick={() => document.querySelector(".dsa-about").scrollIntoView({ behavior: "smooth" })}
                         >
                             Start Learning
                         </button>
@@ -153,7 +170,11 @@ const DSA = () => {
 
                 <div className="dsa-topic-grid">
 
-                    <div className="dsa-topic-card">
+                    <div
+                        className="dsa-topic-card"
+                        onClick={() => setActiveTab("arrays")}
+                        style={{ cursor: "pointer" }}
+                    >
                         <h3>Arrays</h3>
                         <p>Learn searching, sorting, sliding window</p>
                     </div>

@@ -94,28 +94,22 @@
 }
 
 .dsa-btn-secondary {
-
-    padding: 15px 35px;
-
-    border: 2px solid white;
-
-    border-radius: 40px;
-
+    padding: 12px 28px;
+    border: 2px solid #2563eb;
+    border-radius: 30px;
     background: transparent;
-
-    color: white;
-
-    font-size: 17px;
-
+    color: #2563eb;
+    font-size: 16px;
     cursor: pointer;
-
-    transition: .4s;
+    transition: 0.3s ease;
+    font-weight: 500;
 }
 
 .dsa-btn-secondary:hover {
-
-    background: white;
-    color: #2563eb;
+    background: #2563eb;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
 /* Hero Right */
