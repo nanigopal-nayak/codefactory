@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Java from "./pages/Java";
-import Db from "./pages/Db";
+import Home from "./pages/Home/Home";
+import Java from "./pages/Java/Java";
+import Db from "./pages/Db/Db";
 import Spring from "./pages/Spring";
 import JavaScript from "./pages/JavaScript";
 import React from "./pages/React"; 

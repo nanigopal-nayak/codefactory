@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Home.css";
-import logo from "../assets/logo.png";
-import java from "../assets/java.png";
-import react from "../assets/react.svg";
-import database from "../assets/db.png";
-import SpringBoot from "../assets/framework.png";
-import javascript from "../assets/js.png";
-import certificate from "../assets/certificate.png";
-import cvGenerator from "../assets/cv.png";
-import applyJobs from "../assets/working-hours.png";
+import logo from "../../assets/logo.png";
+import java from "../../assets/java.png";
+import react from "../../assets/react.svg";
+import database from "../../assets/db.png";
+import SpringBoot from "../../assets/framework.png";
+import javascript from "../../assets/js.png";
+import certificate from "../../assets/certificate.png";
+import cvGenerator from "../../assets/cv.png";
+import applyJobs from "../../assets/working-hours.png";
 
 
 const Home = () => {

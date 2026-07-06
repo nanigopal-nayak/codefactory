@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import "./Java.css";
-import dbQuestions from "../data/dbQuestions";
-import dbMCQ from "../data/dbMCQ";
-import dbCoding from "../data/dbCoding";
+import "../Java/Java.css";
+import dbQuestions from "../../data/DB/dbQuestions";
+import dbMCQ from "../../data/DB/dbMCQ";
+import dbCoding from "../../data/DB/dbCoding";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
