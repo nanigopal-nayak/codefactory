@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import "./FinalCertificate.css";
-import logo from "../assets/logo.png";
-import signature from "../assets/english.png";
+import logo from "../../assets/logo.png";
+import signature from "../../assets/english.png";
 
 const FinalCertificate = () => {
   const certificateRef = useRef();

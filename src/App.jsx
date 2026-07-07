@@ -1,18 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home/Home.jsx";
 import Java from "./pages/Java/Java.jsx";
 import Db from "./pages/DB/Db.jsx";
-import Spring from "./pages/Spring";
-import JavaScript from "./pages/JavaScript";
+import Spring from "./pages/Spring.jsx";
+import JavaScript from "./pages/JavaScript.jsx";
 import React from "./pages/React"; 
 
-import Certificate from "./pages/Certificate";
-import Instructions from "./pages/Instructions";
-import Exam from "./pages/Exam";
-import Result from "./pages/Result";
-import FinalCertificate from "./pages/FinalCertificate";
-import CvGenerator from "./pages/CvGenerator";
-import Jobs from "./pages/Jobs";
+import Certificate from "./pages/Certificate/Certificate";
+import Instructions from "./pages/Certificate/Instructions";
+import Exam from "./pages/Certificate/Exam";
+import Result from "./pages/Certificate/Result.jsx";
+import FinalCertificate from "./pages/Certificate/FinalCertificate";
+
+import CvGenerator from "./pages/CvGenerator.jsx";
+import Jobs from "./pages/Jobs.jsx";
 
 function App() {
   return (

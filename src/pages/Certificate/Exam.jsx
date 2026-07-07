@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Exam.css";
-import examQuestions from "../data/examQuestions";
+import examQuestions from "../../data/examQuestions";
 
 const Exam = () => {
   const navigate = useNavigate();
