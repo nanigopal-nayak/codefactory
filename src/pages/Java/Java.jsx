@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./Java.css";
-import DSA from "../DSA.jsx";
-import javaQuestions from "../../data/Java/javaQuestions";
-import javaMCQ from "../../data/Java/javaMCQ";
-import javaCoding from "../../data/Java/javaCoding";
+import DSA from "./DSA.jsx";
+import javaQuestions from "../../data/Java/javaQuestions.js";
+import javaMCQ from "../../data/Java/javaMCQ.js";
+import javaCoding from "../../data/Java/javaCoding.js";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 

@@ -2,9 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
 import Java from "./pages/Java/Java.jsx";
 import Db from "./pages/DB/Db.jsx";
-import Spring from "./pages/Spring.jsx";
-import JavaScript from "./pages/JavaScript.jsx";
-import React from "./pages/React"; 
+import Spring from "./pages/Spring/Spring.jsx";
+import JavaScript from "./pages/JavaScript/JavaScript.jsx";
+import React from "./pages/React/React.jsx"; 
 
 import Certificate from "./pages/Certificate/Certificate";
 import Instructions from "./pages/Certificate/Instructions";
@@ -12,8 +12,8 @@ import Exam from "./pages/Certificate/Exam";
 import Result from "./pages/Certificate/Result.jsx";
 import FinalCertificate from "./pages/Certificate/FinalCertificate";
 
-import CvGenerator from "./pages/CvGenerator.jsx";
-import Jobs from "./pages/Jobs.jsx";
+import CvGenerator from "./pages/CV/CvGenerator.jsx";
+import Jobs from "./pages/Jobs/Jobs.jsx";
 
 function App() {
   return (
