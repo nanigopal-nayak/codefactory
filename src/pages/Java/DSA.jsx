@@ -1,14 +1,36 @@
 import React, { useState } from "react";
 import "./DSA.css";
 import Arrays from "./Array.jsx";
+import LinkedList from "./Linkedlist.jsx";
+import StackQueue from "./StackQueue.jsx";
+import Tree from "./Tree.jsx";
 import { useNavigate } from "react-router-dom";
 
 const DSA = () => {
     const [activeTab, setActiveTab] = useState("home");
-    if (activeTab === "arrays") {
+    const renderPage = () => {
+        switch (activeTab) {
+
+            case "arrays":
+                return <Arrays />;
+
+            case "linkedlist":
+                return <LinkedList />;
+
+            case "stackqueue":
+                return <StackQueue />;
+
+            case "tree":
+                return <Tree />;
+
+            default:
+                return null;
+        }
+    };
+
+    if (activeTab !== "home") {
         return (
             <div className="dsa-container">
-
                 <button
                     className="dsa-btn-secondary"
                     onClick={() => setActiveTab("home")}
@@ -16,7 +38,7 @@ const DSA = () => {
                     ← Back
                 </button>
 
-                <Arrays />
+                {renderPage()}
             </div>
         );
     }
@@ -179,19 +201,31 @@ const DSA = () => {
                         <p>Learn searching, sorting, sliding window</p>
                     </div>
 
-                    <div className="dsa-topic-card">
+                    <div
+                        className="dsa-topic-card"
+                        onClick={() => setActiveTab("linkedlist")}
+                        style={{ cursor: "pointer" }}
+                    >
                         <h3>Linked List</h3>
                         <p>Singly, doubly, circular linked lists</p>
                     </div>
 
-                    <div className="dsa-topic-card">
+                    <div
+                        className="dsa-topic-card"
+                        onClick={() => setActiveTab("stackqueue")}
+                        style={{ cursor: "pointer" }}
+                    >
                         <h3>Stack & Queue</h3>
                         <p>LIFO & FIFO operations with problems</p>
                     </div>
 
-                    <div className="dsa-topic-card">
+                    <div
+                        className="dsa-topic-card"
+                        onClick={() => setActiveTab("tree")}
+                        style={{ cursor: "pointer" }}
+                    >
                         <h3>Tree</h3>
-                        <p>Binary tree, BST, traversals</p>
+                        <p>Binary Tree, BST, Traversals & Interview Problems</p>
                     </div>
 
                     <div className="dsa-topic-card">

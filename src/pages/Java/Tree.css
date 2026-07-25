@@ -1,0 +1,294 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.tree-container {
+    min-height: 100vh;
+    padding: 30px;
+    background: #f5f7fb;
+}
+
+/* HERO */
+.tree-hero {
+    background: linear-gradient(135deg, #0b1f3a, #1e7bff);
+    color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.tree-hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.tree-hero p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* CARD */
+.tree-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+    text-align: center;
+}
+
+.tree-card h2 {
+    font-size: 32px;
+    color: #0b1f3a;
+    margin-bottom: 30px;
+}
+
+/* BUTTONS */
+.tree-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.tree-buttons button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    background: #e5e7eb;
+    color: #0b1f3a;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.tree-buttons button:hover {
+    background: #1e7bff;
+    color: #fff;
+}
+
+.tree-buttons button.active {
+    background: linear-gradient(135deg, #0b1f3a, #1e7bff);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* COMMON */
+.animation-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+}
+
+.animation-area p {
+    margin-top: 35px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* TREE */
+.tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    animation: treeFloat 2s infinite alternate;
+}
+
+.tree-node {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1e7bff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(30, 123, 255, .3);
+    transition: .3s;
+}
+
+.tree-node:hover {
+    transform: scale(1.1);
+}
+
+.root {
+    margin-bottom: 25px;
+}
+
+/* FIRST LEVEL */
+.tree-level {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    margin-top: 35px;
+}
+
+.tree-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* SECOND LEVEL */
+.tree-child .tree-level {
+    gap: 60px;
+    margin-top: 30px;
+}
+
+/* CONNECTING LINES */
+.tree-line {
+    position: absolute;
+    background: #1e7bff;
+}
+
+.tree-line.left {
+    width: 3px;
+    height: 45px;
+    top: 58px;
+    left: calc(50% - 70px);
+    transform: rotate(55deg);
+    transform-origin: top;
+}
+
+.tree-line.right {
+    width: 3px;
+    height: 45px;
+    top: 58px;
+    right: calc(50% - 70px);
+    transform: rotate(-55deg);
+    transform-origin: top;
+}
+
+.small-left {
+    width: 2px;
+    height: 35px;
+    top: 58px;
+    left: 15px;
+    transform: rotate(45deg);
+    transform-origin: top;
+}
+
+.small-right {
+    width: 2px;
+    height: 35px;
+    top: 58px;
+    right: 15px;
+    transform: rotate(-45deg);
+    transform-origin: top;
+}
+
+/* ANIMATION */
+@keyframes treeFloat {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:992px) {
+    .tree-level {
+        gap: 70px;
+    }
+
+    .tree-child .tree-level {
+        gap: 35px;
+    }
+
+    .tree-node {
+        width: 55px;
+        height: 55px;
+        font-size: 20px;
+    }
+}
+
+@media(max-width:768px) {
+    .tree-container {
+        padding: 15px;
+    }
+
+    .tree-hero {
+        padding: 25px;
+    }
+
+    .tree-hero h1 {
+        font-size: 32px;
+    }
+
+    .tree-hero p {
+        font-size: 16px;
+    }
+
+    .tree-card {
+        padding: 20px;
+    }
+
+    .tree-card h2 {
+        font-size: 26px;
+    }
+
+    .tree-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tree-buttons button {
+        width: 240px;
+    }
+
+    .tree-level {
+        gap: 35px;
+    }
+
+    .tree-child .tree-level {
+        gap: 15px;
+    }
+
+    .tree-node {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .tree-line.left {
+        height: 30px;
+        left: calc(50% - 40px);
+    }
+
+    .tree-line.right {
+        height: 30px;
+        right: calc(50% - 40px);
+    }
+
+    .small-left {
+        height: 20px;
+        left: 10px;
+    }
+
+    .small-right {
+        height: 20px;
+        right: 10px;
+    }
+
+    .animation-area {
+        overflow-x: auto;
+        padding-bottom: 15px;
+    }
+
+    .animation-area p {
+        font-size: 16px;
+    }
+}

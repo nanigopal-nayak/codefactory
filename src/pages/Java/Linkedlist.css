@@ -1,0 +1,325 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:"Poppins",Arial,sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+.linkedlist-container{
+    min-height:100vh;
+    padding:30px;
+    background:#f5f7fb;
+}
+
+
+/* HERO */
+
+.linkedlist-hero{
+    background:linear-gradient(135deg,#0b1f3a,#1e7bff);
+    color:white;
+    padding:40px;
+    border-radius:20px;
+    margin-bottom:30px;
+}
+
+.linkedlist-hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.linkedlist-hero p{
+    font-size:18px;
+    line-height:1.7;
+}
+
+
+
+/* MAIN CARD */
+
+.linked-card{
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+    text-align:center;
+}
+
+.linked-card h2{
+    font-size:32px;
+    color:#0b1f3a;
+    margin-bottom:25px;
+}
+
+
+
+/* BUTTON */
+
+.ll-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+}
+
+.ll-buttons button{
+    padding:14px 28px;
+    border:none;
+    border-radius:30px;
+    background:#e5e7eb;
+    color:#0b1f3a;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.ll-buttons button:hover{
+    background:#1e7bff;
+    color:white;
+    transform:translateY(-3px);
+}
+
+.ll-buttons button.active{
+    background:linear-gradient(135deg,#0b1f3a,#1e7bff);
+    color:white;
+    transform:scale(1.05);
+    box-shadow:0 8px 20px rgba(30,123,255,.35);
+}
+
+.ll-buttons button:active{
+    transform:scale(.95);
+}
+
+
+
+/* COMMON */
+
+.animation-area{
+    min-height:260px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.animation-area p{
+    margin-top:30px;
+    font-size:18px;
+    color:#555;
+}
+
+
+
+/* SINGLY */
+
+.ll-flow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.ll-node{
+    display:flex;
+    border:3px solid #1e7bff;
+    border-radius:12px;
+    overflow:hidden;
+    animation:float 2s infinite;
+}
+
+.ll-data{
+    width:75px;
+    height:75px;
+    background:#1e7bff;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.ll-pointer{
+    width:75px;
+    height:75px;
+    background:#dbeafe;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+.ll-arrow{
+    font-size:35px;
+    color:#1e7bff;
+    animation:move 1s infinite alternate;
+}
+
+
+
+/* DOUBLY */
+
+.dll-flow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.dll-node{
+    display:flex;
+    border:3px solid #16a34a;
+    border-radius:12px;
+    overflow:hidden;
+    animation:float 2s infinite;
+}
+
+.dll-data{
+    width:70px;
+    height:70px;
+    background:#16a34a;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.dll-pointer{
+    width:70px;
+    height:70px;
+    background:#dcfce7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.dll-arrow{
+    font-size:35px;
+    color:#16a34a;
+    animation:pulse 1s infinite alternate;
+}
+
+
+
+/* CIRCULAR */
+
+.circle-box{
+    width:280px;
+    height:280px;
+    position:relative;
+    animation:rotate 8s linear infinite;
+}
+
+.circle-node{
+    position:absolute;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#7c3aed;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    animation:scale 1.5s infinite alternate;
+}
+
+.one{
+    top:0;
+    left:105px;
+}
+
+.two{
+    right:0;
+    top:105px;
+}
+
+.three{
+    bottom:0;
+    left:105px;
+}
+
+.four{
+    left:0;
+    top:105px;
+}
+
+
+
+/* ANIMATION */
+
+@keyframes float{
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+@keyframes move{
+    to{
+        transform:translateX(10px);
+    }
+}
+
+@keyframes pulse{
+    to{
+        transform:scale(1.15);
+    }
+}
+
+@keyframes rotate{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes scale{
+    to{
+        transform:scale(1.15);
+    }
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .linkedlist-container{
+        padding:15px;
+    }
+
+    .linkedlist-hero h1{
+        font-size:32px;
+    }
+
+    .linked-card{
+        padding:20px;
+    }
+
+    .ll-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .ll-buttons button{
+        width:90%;
+    }
+
+}
