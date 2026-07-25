@@ -1,0 +1,287 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.graph-container {
+    min-height: 100vh;
+    padding: 30px;
+    background: #f5f7fb;
+}
+
+/* HERO */
+.graph-hero {
+    background: linear-gradient(135deg, #0b1f3a, #1e7bff);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.graph-hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.graph-hero p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* CARD */
+.graph-card {
+    background: white;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+    text-align: center;
+}
+
+.graph-card h2 {
+    font-size: 32px;
+    color: #0b1f3a;
+    margin-bottom: 30px;
+}
+
+/* BUTTON */
+.graph-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.graph-buttons button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 30px;
+    background: #e5e7eb;
+    color: #0b1f3a;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.graph-buttons button:hover {
+    background: #1e7bff;
+    color: white;
+}
+
+.graph-buttons button.active {
+    background: linear-gradient(135deg, #0b1f3a, #1e7bff);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* GRAPH AREA */
+.graph-animation {
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.graph-area {
+    width: 500px;
+    height: 320px;
+    position: relative;
+}
+
+.graph-animation p {
+    margin-top: 40px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* NODES */
+.graph-node {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #1e7bff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    box-shadow: 0 8px 20px rgba(30, 123, 255, .3);
+    animation: nodeMove 1.5s infinite alternate;
+}
+
+.node-a {
+    top: 40px;
+    left: 210px;
+}
+
+.node-b {
+    top: 140px;
+    left: 80px;
+}
+
+.node-c {
+    top: 140px;
+    right: 80px;
+}
+
+.node-d {
+    bottom: 30px;
+    left: 210px;
+}
+
+/* EDGES */
+.edge {
+    height: 3px;
+    background: #1e7bff;
+    position: absolute;
+    transform-origin: left center;
+}
+
+.edge-ab {
+    width: 160px;
+    top: 90px;
+    left: 140px;
+    transform: rotate(145deg);
+}
+
+.edge-ac {
+    width: 160px;
+    top: 90px;
+    left: 260px;
+    transform: rotate(35deg);
+}
+
+.edge-bd {
+    width: 150px;
+    top: 190px;
+    left: 130px;
+    transform: rotate(45deg);
+}
+
+.edge-cd {
+    width: 150px;
+    top: 190px;
+    left: 260px;
+    transform: rotate(135deg);
+}
+
+/* ARROW GRAPH */
+.arrow-edge {
+    position: absolute;
+    font-size: 40px;
+    color: #1e7bff;
+    font-weight: bold;
+}
+
+.arrow-ab {
+    top: 90px;
+    left: 190px;
+    transform: rotate(25deg);
+}
+
+.arrow-bc {
+    top: 155px;
+    left: 250px;
+}
+
+.arrow-ad {
+    top: 120px;
+    left: 240px;
+}
+
+.arrow-dc {
+    bottom: 80px;
+    left: 250px;
+}
+
+/* WEIGHT */
+.weight {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #16a34a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.weight-ab {
+    top: 90px;
+    left: 250px;
+}
+
+.weight-ac {
+    top: 100px;
+    left: 200px;
+}
+
+.weight-bc {
+    top: 160px;
+    left: 285px;
+}
+
+/* ANIMATION */
+@keyframes nodeMove {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* MOBILE */
+@media(max-width:768px) {
+    .graph-container {
+        padding: 15px;
+    }
+
+    .graph-hero {
+        padding: 25px;
+    }
+
+    .graph-hero h1 {
+        font-size: 32px;
+    }
+
+    .graph-hero p {
+        font-size: 16px;
+    }
+
+    .graph-card {
+        padding: 20px;
+    }
+
+    .graph-card h2 {
+        font-size: 26px;
+    }
+
+    .graph-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .graph-buttons button {
+        width: 240px;
+    }
+
+    .graph-area {
+        width: 330px;
+        height: 300px;
+        transform: scale(.8);
+    }
+
+    .graph-animation p {
+        font-size: 16px;
+    }
+}

@@ -4,6 +4,7 @@ import Arrays from "./Array.jsx";
 import LinkedList from "./Linkedlist.jsx";
 import StackQueue from "./StackQueue.jsx";
 import Tree from "./Tree.jsx";
+import Graph from "./Graph.jsx";
 import { useNavigate } from "react-router-dom";
 
 const DSA = () => {
@@ -22,6 +23,9 @@ const DSA = () => {
 
             case "tree":
                 return <Tree />;
+
+            case "graph":
+                return <Graph />;
 
             default:
                 return null;
@@ -228,9 +232,13 @@ const DSA = () => {
                         <p>Binary Tree, BST, Traversals & Interview Problems</p>
                     </div>
 
-                    <div className="dsa-topic-card">
+                    <div
+                        className="dsa-topic-card"
+                        onClick={() => setActiveTab("graph")}
+                        style={{ cursor: "pointer" }}
+                    >
                         <h3>Graph</h3>
-                        <p>BFS, DFS, shortest path</p>
+                        <p>BFS, DFS, Shortest Path & Graph Traversals</p>
                     </div>
 
                     <div className="dsa-topic-card">
