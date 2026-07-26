@@ -5,6 +5,7 @@ import LinkedList from "./Linkedlist.jsx";
 import StackQueue from "./StackQueue.jsx";
 import Tree from "./Tree.jsx";
 import Graph from "./Graph.jsx";
+import DP from "./Dp.jsx";
 import { useNavigate } from "react-router-dom";
 
 const DSA = () => {
@@ -26,6 +27,9 @@ const DSA = () => {
 
             case "graph":
                 return <Graph />;
+
+            case "dp":
+                return <DP />;
 
             default:
                 return null;
@@ -241,9 +245,13 @@ const DSA = () => {
                         <p>BFS, DFS, Shortest Path & Graph Traversals</p>
                     </div>
 
-                    <div className="dsa-topic-card">
-                        <h3>DP</h3>
-                        <p>Dynamic Programming patterns</p>
+                    <div
+                        className="dsa-topic-card"
+                        onClick={() => setActiveTab("dp")}
+                        style={{ cursor: "pointer" }}
+                    >
+                        <h3>Dynamic Programming</h3>
+                        <p>Memoization, Tabulation & Interview Problems</p>
                     </div>
 
                 </div>

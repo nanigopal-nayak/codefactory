@@ -1,0 +1,643 @@
+/* ================================
+   DP MAIN CONTAINER
+================================ */
+
+.dp-container {
+
+    min-height: 100vh;
+    padding: 30px;
+    background: #f5f7fb;
+    font-family: "Poppins", sans-serif;
+
+}
+
+
+/* ================================
+   HERO SECTION
+================================ */
+
+.dp-hero {
+
+    background: linear-gradient(
+        135deg,
+        #0b1f3a,
+        #1e7bff
+    );
+
+    color: white;
+    padding: 40px;
+    border-radius: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+}
+
+
+.dp-hero h1 {
+
+    font-size: 38px;
+    margin-bottom: 15px;
+
+}
+
+
+.dp-hero p {
+
+    font-size: 18px;
+    opacity: 0.9;
+
+}
+
+
+
+/* ================================
+   MAIN CARD
+================================ */
+
+.dp-card {
+
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.08);
+
+}
+
+
+.dp-card h2 {
+
+    text-align: center;
+    color: #0b1f3a;
+    margin-bottom: 25px;
+
+}
+
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.dp-buttons {
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-bottom: 35px;
+
+}
+
+
+.dp-buttons button {
+
+    padding: 12px 22px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: #e8e8e8;
+
+    color: #0b1f3a;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.dp-buttons button:hover {
+
+    background: #1e7bff;
+    color: white;
+
+}
+
+
+
+.dp-buttons .active {
+
+    background: #1e7bff;
+    color: white;
+
+}
+
+
+
+/* ================================
+   COMMON ANIMATION AREA
+================================ */
+
+.dp-animation {
+
+    text-align: center;
+
+    padding: 25px;
+
+    animation: fadeIn 0.5s ease;
+
+}
+
+
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to {
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+.dp-animation p {
+
+    margin-top: 25px;
+
+    line-height: 1.8;
+
+    color:#333;
+
+    font-size:16px;
+
+}
+
+
+
+/* ================================
+   FIBONACCI
+================================ */
+
+
+.fib-box {
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin:20px auto;
+
+}
+
+
+
+.fib-item {
+
+    width:60px;
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#e8e8e8;
+
+    border-radius:12px;
+
+    font-size:22px;
+    font-weight:bold;
+
+    color:#0b1f3a;
+
+}
+
+
+
+.fib-item.result {
+
+    background:#1e7bff;
+
+    color:white;
+
+}
+
+
+
+.fib-arrow {
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    color:#1e7bff;
+
+}
+
+
+
+/* ================================
+   CLIMBING STAIRS
+================================ */
+
+
+.stairs-box {
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    gap:10px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.step {
+
+    width:55px;
+
+    height:55px;
+
+    background:#1e7bff;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:8px;
+
+    font-weight:bold;
+
+}
+
+
+
+.step:nth-child(2){
+
+    margin-top:-20px;
+
+}
+
+
+.step:nth-child(3){
+
+    margin-top:-40px;
+
+}
+
+
+.step:nth-child(4){
+
+    margin-top:-60px;
+
+}
+
+
+.step:nth-child(5){
+
+    margin-top:-80px;
+
+}
+
+
+
+.stairs-path {
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+
+.path-box {
+
+    padding:15px 25px;
+
+    background:#e8e8e8;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+}
+
+
+
+.path-box.result {
+
+    background:#1e7bff;
+
+    color:white;
+
+}
+
+
+
+.path-arrow {
+
+    font-size:25px;
+
+    color:#1e7bff;
+
+}
+
+
+
+/* ================================
+   KNAPSACK
+================================ */
+
+
+.bag {
+
+    font-size:70px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.items-row {
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+
+
+.item-box {
+
+    width:100px;
+
+    padding:15px;
+
+    background:#e8e8e8;
+
+    border-radius:15px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+
+
+.capacity {
+
+    margin:25px auto;
+
+    background:#1e7bff;
+
+    color:white;
+
+    padding:15px;
+
+    width:220px;
+
+    border-radius:15px;
+
+    font-weight:bold;
+
+}
+
+
+
+/* ================================
+   LCS
+================================ */
+
+
+.lcs-container {
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+
+
+.string-box {
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+
+
+.string-box span {
+
+    width:45px;
+
+    height:45px;
+
+    background:#e8e8e8;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:8px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+}
+
+
+
+.lcs-result {
+
+    background:#1e7bff;
+
+    color:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+}
+
+
+
+/* ================================
+   COIN CHANGE
+================================ */
+
+
+.coin-row {
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+
+
+.coin-box {
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:#1e7bff;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+
+
+.coin-target {
+
+    margin:30px auto 15px;
+
+    padding:15px;
+
+    width:220px;
+
+    background:#e8e8e8;
+
+    border-radius:15px;
+
+    font-weight:bold;
+
+}
+
+
+
+.coin-answer {
+
+    background:#0b1f3a;
+
+    color:white;
+
+    padding:18px;
+
+    width:250px;
+
+    margin:auto;
+
+    border-radius:15px;
+
+    font-size:20px;
+
+}
+
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+
+@media(max-width:768px){
+
+
+.dp-container {
+
+    padding:15px;
+
+}
+
+
+.dp-hero h1 {
+
+    font-size:28px;
+
+}
+
+
+.dp-buttons button {
+
+    width:100%;
+
+}
+
+
+.fib-box,
+.stairs-path,
+.items-row,
+.coin-row {
+
+    flex-wrap:wrap;
+
+}
+
+
+.string-box span {
+
+    width:35px;
+    height:35px;
+
+}
+
+
+.item-box {
+
+    width:80px;
+
+}
+
+
+}
