@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./Linkedlist.css";
+import linkedListQuestions from "../../data/LinkedList/linkedListQuestions.js"
 
 const LinkedList = () => {
-
   const [type, setType] = useState("singly");
-
   return (
     <div className="linkedlist-container">
-
       {/* Hero */}
       <div className="linkedlist-hero">
         <h1>Linked List</h1>
@@ -16,14 +16,11 @@ const LinkedList = () => {
           Singly, Doubly and Circular Linked List with visualization.
         </p>
       </div>
-
       {/* Single Card */}
       <section className="linked-card">
         <h2>🔗 Linked List Visualization</h2>
-
         {/* Buttons */}
         <div className="ll-buttons">
-
           <button
             className={type === "singly" ? "active" : ""}
             onClick={() => setType("singly")}
@@ -136,6 +133,103 @@ const LinkedList = () => {
           </div>
         }
       </section>
+      {/* Coding Questions */}
+      <div className="array-section">
+        {linkedListQuestions.map((question, index) => (
+          <div className="array-card problem-card" key={question.id}>
+            <h2>🧠 {question.title}</h2>
+            <p>{question.description}</p>
+
+            <div className="button-group">
+
+              <button
+                className="exp-btn"
+                onClick={() =>
+                  document
+                    .getElementById(`explain${index}`)
+                    .classList.toggle("show")
+                }
+              >
+                📖 Show 
+              </button>
+
+              <button
+                className="code-btn"
+                onClick={() =>
+                  document
+                    .getElementById(`code${index}`)
+                    .classList.toggle("show")
+                }
+              >
+                💻 Show Code
+              </button>
+
+            </div>
+
+            {/* Explanation */}
+
+            <div
+              className="explanation"
+              id={`explain${index}`}
+            >
+
+              <div className="complexity">
+
+                <h4>⏱ Complexity Analysis</h4>
+
+                <div className="complexity-box">
+                  <strong>Time Complexity:</strong> {question.complexity.time}
+                </div>
+
+                <div className="complexity-box">
+                  <strong>Space Complexity:</strong> {question.complexity.space}
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Code */}
+
+            <div
+              className="code-section"
+              id={`code${index}`}
+            >
+
+              <div className="code-header">
+
+                <h3>💻 Java Solution</h3>
+
+                <button
+                  className="copy-btn"
+                  onClick={() =>
+                    navigator.clipboard.writeText(question.code)
+                  }
+                >
+                  📋 Copy Code
+                </button>
+
+              </div>
+
+              <div className="code-scroll">
+
+                <SyntaxHighlighter
+                  language="java"
+                  style={tomorrow}
+                  showLineNumbers
+                >
+                  {question.code}
+                </SyntaxHighlighter>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
     </div>
   );
 };
